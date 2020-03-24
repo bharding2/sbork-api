@@ -1,5 +1,6 @@
 import express, { Request, Response, Application } from 'express';
 import cors from 'cors';
+import bodyParser from 'body-parser'
 import pgPromise from 'pg-promise';
 import { PlayerRouter } from './routes/PlayerRouter';
 
@@ -10,6 +11,10 @@ const pgp = pgPromise();
 const db = pgp(process.env.SBORK_PG_CONNECTION_STRING);
 
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use('/player', PlayerRouter);
 
