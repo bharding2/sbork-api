@@ -5,7 +5,7 @@ import pgPromise from 'pg-promise';
 import { PlayerRouter } from './routes/PlayerRouter';
 
 const app: Application = express();
-const port = process.env.API_PORT;
+const port = process.env.PORT;
 
 const pgp = pgPromise();
 const db = pgp(process.env.SBORK_PG_CONNECTION_STRING);
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/player', PlayerRouter);
+app.use('/api/player', PlayerRouter);
 
 app.get('/', (req: Request, res: Response) => {
     res.send("Hello world!");
