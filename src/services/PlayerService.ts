@@ -1,7 +1,4 @@
-import pgPromise from 'pg-promise';
-
-const pgp = pgPromise();
-const db = pgp(process.env.SBORK_PG_CONNECTION_STRING);
+import { Db } from './Db';
 
 export interface Player {
     id: string;
